@@ -10,7 +10,7 @@
 <calc>     ::= "CALC " <expr>
 # EJERCICIO 3 (TODO): una expresion tambien puede ir entre parentesis.
 #                     Anade esa alternativa a la regla <expr>.
-<expr>     ::= <number> | <expr> <op> <expr>
+<expr>     ::= <number> | <expr> <op> <expr> | "(" <expr> ")"
 <op>       ::= "+" | "-" | "*" | "/"
 <number>   ::= <digit>+
 # (<digit> es un digito del 0 al 9: ya viene definido en Fandango)

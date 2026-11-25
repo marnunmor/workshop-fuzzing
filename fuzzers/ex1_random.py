@@ -28,7 +28,9 @@ from harness import CrashCollector
 def random_input() -> bytes:
     # TODO: devuelve bytes aleatorios de longitud aleatoria.
     # Pista: random.randint(a, b), random.randbytes(n)
-    return b"EGC/1\nCALC 1+1"
+    
+    n = random.randint(0,100)
+    return random.randbytes(n)
 
 
 def main(budget: float):

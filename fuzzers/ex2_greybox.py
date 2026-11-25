@@ -71,20 +71,31 @@ def mutate(data: bytes) -> bytes:
     if not data:                      # entrada vacia: devolvemos un byte aleatorio
         return bytes([random.randrange(256)])
     data = bytearray(data)
-    choice = random.randint(0, 2)
-
+    choice = random.randint(0, 3)
+    List= ["CALC","MSG",",","("]
     if choice == 0:
         # TODO: cambiar un byte en una posicion aleatoria por otro aleatorio
         # Pista: random.randrange(len(data)) da una posicion, random.randrange(256) un byte
-        pass
+        r = random.randrange(len(data))
+        data[r] =random.randrange(256)
 
     elif choice == 1:
         # TODO: borrar un byte en una posicion aleatoria
-        pass
+        r = random.randrange(len(data))
+        del data[r]
 
     elif choice == 2:
         # TODO: insertar un byte aleatorio en una posicion aleatoria
-        pass
+        i = random.randrange(len(data))
+        b= random.randrange(256)
+        data.insert(i,b)
+
+    elif choice == 3:
+            # TODO: insertar un byte aleatorio en una posicion aleatoria
+        for i in List:
+            b= random.randrange(256)
+            data.insert(random.randrange(len(data)),i.encode("utf-8"))
+                
 
     return bytes(data)
 
@@ -137,3 +148,10 @@ if __name__ == "__main__":
         main(float(sys.argv[1]) if len(sys.argv) > 1 else 90)
     except KeyboardInterrupt:
         print("\nInterrumpido.")
+
+
+
+""" == greybox: 1743406 ejecuciones en 90.0s (19368/s) ==
+   Rechazadas en la cabecera:  73.8%   Rechazadas despues:  25.6%   Validas:   0.6%   Crashes:   0.0%
+   - KeyError en enter_debug_mode() linea 54
+       b'DEBUG/1MSGf\xaa4:h\x12oa\n' """
