@@ -71,7 +71,7 @@ def mutate(data: bytes) -> bytes:
     if not data:                      # entrada vacia: devolvemos un byte aleatorio
         return bytes([random.randrange(256)])
     data = bytearray(data)
-    choice = random.randint(0, 3)
+    choice = random.randint(0,2)
     List= ["CALC","MSG",",","("]
     if choice == 0:
         # TODO: cambiar un byte en una posicion aleatoria por otro aleatorio
@@ -89,13 +89,6 @@ def mutate(data: bytes) -> bytes:
         i = random.randrange(len(data))
         b= random.randrange(256)
         data.insert(i,b)
-
-    elif choice == 3:
-            # TODO: insertar un byte aleatorio en una posicion aleatoria
-        for i in List:
-            b= random.randrange(256)
-            data.insert(random.randrange(len(data)),i.encode("utf-8"))
-                
 
     return bytes(data)
 
